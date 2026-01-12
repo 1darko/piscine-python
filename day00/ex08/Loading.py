@@ -2,6 +2,9 @@ import os
 from time import time
 
 def time_spent(start) -> float:
+    """
+    Calculate time spent since start.
+    """
     formated_time = time() - start
     if(formated_time < 10):
         return f"00:0{formated_time:.0f}"
@@ -19,6 +22,9 @@ def time_spent(start) -> float:
 
 
 def time_estimated(start, percentage) -> float:
+    """
+    Estimate remaining time based on percentage completed.
+    """
     if(percentage > 0 and percentage < 100):
         estimated_time = (time() - start) * (100 / percentage)
         remaining_time = estimated_time - (time() - start)
@@ -39,11 +45,17 @@ def time_estimated(start, percentage) -> float:
 
 
 def iter_per_sec(start, iteration) -> float:
+    """
+    Calculate iterations per second.
+    """
     time_spent = time() - start
     if time_spent > 0:
         return f"{iteration / time_spent:.2f}"
 
 def ft_tqdm(lst: range) -> None:
+    """
+    Displays the progress of iterating over a list or range.
+    """
     total = len(lst)
     bar_length = os.get_terminal_size().columns - 50
     starting_time = time()

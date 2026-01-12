@@ -2,6 +2,10 @@ import sys
 
 
 def countAndPrint(building_name):
+    """
+    Count and print the number of upper case letters, lower case letters,
+    digits, special characters and spaces in the given building name.
+    """
     size = len(building_name)
     all = {
         "upper": 0,
@@ -31,23 +35,25 @@ def countAndPrint(building_name):
 
 
 def main():
-    if (len(sys.argv) > 2):
-        print("AssertionError: more than one argument is provided\n")
-    elif (len(sys.argv) < 2 or sys.argv[1] == ""):
-        try:
-            build = input("What is the text to count?\n")
-        except EOFError:
-            print("\nAssertionError: no input provided (EOF encountered).")
-            return 1
-        except KeyboardInterrupt:
-            print("\nAssertionError: no input provided (KeyboardInterrupt).")
-            return 1
-        if (build is None or build == ""):
-            print("AssertionError: No building name provided.")
-            return 1
+    """
+    Main function to handle input and call counting function.
+    """
+    try:
+        assert (len(sys.argv) <= 2), "more than one argument is provided"
+        if len(sys.argv) < 2 or not sys.argv[1]:
+            try:
+                build = input("What is the text to count?\n")
+            except (EOFError):
+                raise AssertionError("no input provided (EOF encountered).")
+            except (KeyboardInterrupt):
+                raise AssertionError("no input provided (KeyboardInterrupt).")
+            assert build, "no building name provided."
+        else:
+            build = sys.argv[1]
         countAndPrint("\n" + build)
-    else:
-        countAndPrint(sys.argv[1])
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
+        return 1
     return 0
 
 

@@ -2,6 +2,9 @@ import sys
 
 
 def main():
+    """
+    Converts a given string to Morse code.
+    """
     args = sys.argv
     MORSE_CODE_DICT = {
         'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
@@ -15,13 +18,13 @@ def main():
         '7': '--...', '8': '---..', '9': '-----.', ' ': '/'
     }
     try:
-        assert len(args) == 2, "AssertionError: incorrect number of arguments"
+        assert len(args) == 2, "incorrect number of arguments"
         msg = args[1].upper()
         assert all(c.isalnum() or c.isspace() for c in msg), \
-            "AssertionError: 1st arg is not an alnum str"
+            "first argument is not an alphanumeric str"
         print(" ".join(MORSE_CODE_DICT[c] for c in msg))
     except AssertionError as msg:
-        print(msg)
+        print(f"AssertionError: {msg}")
         return 1
     return
 

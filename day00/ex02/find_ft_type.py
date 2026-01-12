@@ -4,5 +4,5 @@ def all_thing_is_obj(object: any) -> int:
     elif(isinstance(object, int)):
         print("Type not found")
     else:
-        print(type(object))
+        print(f'{type(object).__name__ } : {type(object)}')
     return 42   
