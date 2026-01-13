@@ -1,16 +1,17 @@
 import os
 from time import time
 
+
 def time_spent(start) -> float:
     """
     Calculate time spent since start.
     """
     formated_time = time() - start
-    if(formated_time < 10):
+    if (formated_time < 10):
         return f"00:0{formated_time:.0f}"
-    elif(formated_time < 60):
+    elif (formated_time < 60):
         return f"00:{formated_time:.0f}"
-    elif(formated_time < 3600):
+    elif (formated_time < 3600):
         minutes = int(formated_time // 60)
         seconds = formated_time % 60
         return f"{minutes}:{seconds:.2f}"
@@ -25,14 +26,14 @@ def time_estimated(start, percentage) -> float:
     """
     Estimate remaining time based on percentage completed.
     """
-    if(percentage > 0 and percentage < 100):
+    if (percentage > 0 and percentage < 100):
         estimated_time = (time() - start) * (100 / percentage)
         remaining_time = estimated_time - (time() - start)
-        if(remaining_time < 10):
+        if (remaining_time < 10):
             return f"00:0{remaining_time:.0f}"
-        elif(remaining_time < 60):
+        elif (remaining_time < 60):
             return f"00:{remaining_time:.0f}"
-        elif(remaining_time < 3600):
+        elif (remaining_time < 3600):
             minutes = int(remaining_time // 60)
             seconds = remaining_time % 60
             return f"{minutes}:{seconds:.2f}"
@@ -52,6 +53,7 @@ def iter_per_sec(start, iteration) -> float:
     if time_spent > 0:
         return f"{iteration / time_spent:.2f}"
 
+
 def ft_tqdm(lst: range) -> None:
     """
     Displays the progress of iterating over a list or range.
@@ -68,6 +70,7 @@ def ft_tqdm(lst: range) -> None:
         time_done = time_spent(starting_time)
         time_remain = time_estimated(starting_time, percent)
         its = iter_per_sec(starting_time, i + 1)
-        print(f'\r{percent:.0f}%|{bar}| {i+1}/{total} [{time_done}<{time_remain}, {its}it/s]', end='')
+        print(f'\r{percent:.0f}%|{bar}| \
+              {i+1}/{total} [{time_done}<{time_remain}, {its}it/s]', end='')
         yield elem
     print()
