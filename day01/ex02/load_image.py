@@ -1,8 +1,25 @@
-def ft_load(path: str) -> array: 
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def ft_load(path: str) -> np.ndarray | None:
     """
-    You need to write a function that loads an image, prints its format, and its pixels
-    content in RGB format.
-    You have to handle, at least, JPG and JPEG format.
-    You need to handle any error with a clear error message
+    Load an image from the given file path.
+    Prints its format, and its pixels content in RGB format.
+    Returns the image as a NumPy array or None if the file is not found.
     """
-    
+    try:
+        assert path and isinstance(path, str), "Path must be a non-empty string."
+        assert path.endswith(('.jpg', '.jpeg')), \
+            "Unsupported file format. Use .jpg or .jpeg files."
+        image = plt.imread(path)
+        print(f"Image shape: {image.shape}")
+        print("Pixels content (RGB):")
+        print(image)
+        return image
+    except FileNotFoundError:
+        print(f"Image file not found at path: {path}")
+        return None
+    except AssertionError as e:
+        print(e)
+        return None
