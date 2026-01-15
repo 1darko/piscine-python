@@ -39,11 +39,18 @@ def zoom(scale_factor: float) -> np.ndarray | None:
         xr = int(cx + zoom_w // 2)
 
         cropped_image = image[yl:yr, xl:xr]
-
-        print(f"New shape after slicing: {cropped_image.shape} or ({cropped_image.shape[0]}, {cropped_image.shape[1]})")        
-        plt.imshow(cropped_image)
+        # Set the image to grey if scale_factor is greater than or equal to 1.5
+        if(scale_factor >= 1.5):
+             cropped_image = cropped_image[:,:,0] * 0.299 + cropped_image[:,:,1] * 0.587 + cropped_image[:,:,2] * 0.114
+        shape_info = cropped_image.shape[0], cropped_image.shape[1], cropped_image.shape[2] if len(cropped_image.shape) > 2 else 1
+        print(f"New shape after slicing: {shape_info} or {cropped_image.shape}")        
+        plt.imshow(cropped_image, cmap='grey' if scale_factor >= 1.5 else None)
         plt.show()
         return cropped_image
+    # Handle ctrl + C interruption
+    except KeyboardInterrupt:
+        print("\nProcess interrupted by user. Exiting...")
+        return None
     except FileNotFoundError:
         print(f"Image file not found at path: {path}")
         return None
