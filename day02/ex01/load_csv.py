@@ -1,13 +1,15 @@
 import pandas as pd
 
-def load(path: str) -> pd.DataFrame | None: 
-    """
-    Load a CSV file into a pandas DataFrame.
-    """
 
+def load(path: str) -> pd.DataFrame | None:
+    """
+    Load a CSV file into a pandas DataFrame and returns it.
+    """
     try:
-        assert path and isinstance(path, str), "Path must be a non-empty string."
-        assert path.endswith('.csv'), "Unsupported file format. Use .csv files."
+        assert path and isinstance(path, str), \
+            "Path must be a non-empty string."
+        assert path.endswith('.csv'), \
+            "Unsupported file format. Use .csv files."
         file = pd.read_csv(path)
         assert not file.empty, "The CSV file is empty."
     except FileNotFoundError:
@@ -21,10 +23,3 @@ def load(path: str) -> pd.DataFrame | None:
         return None
     print(f'Loading dataset of dimensions {file.shape}')
     return file
-
-def main():
-    path = "/home/dakojic/goinfre/population_total.csv"
-    print(load(path))
-
-if __name__ == "__main__":
-    main()
