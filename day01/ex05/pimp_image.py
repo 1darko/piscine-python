@@ -31,7 +31,6 @@ def ft_red(img: np.ndarray) -> np.ndarray:
     try:
         assert img.ndim == 3 and img.shape[2] >= 3, "Image must be RGB"
         red_img = img.copy().astype(float)
-        #red_img[:, :, 0] *= 2
         red_img[:, :, 1] *= 0.2
         red_img[:, :, 2] *= 0.2
         red_img = np.clip(red_img, 0, 255).astype(np.uint8)
@@ -44,15 +43,15 @@ def ft_red(img: np.ndarray) -> np.ndarray:
     plt.show()
     return red_img
 
+
 def ft_green(img: np.ndarray) -> np.ndarray | None:
-    """ 
+    """
     Set the image to green colors.
     """
     try:
         assert img.ndim == 3 and img.shape[2] >= 3, "Image must be RGB"
         green_img = img.copy().astype(float)
         green_img[:, :, 0] = 10
-        #green_img[:, :, 1] *= 0.2
         green_img[:, :, 2] = 10
         green_img = np.clip(green_img, 0, 255).astype(np.uint8)
     except AssertionError as e:
@@ -64,8 +63,9 @@ def ft_green(img: np.ndarray) -> np.ndarray | None:
     plt.show()
     return green_img
 
+
 def ft_blue(img: np.ndarray) -> np.ndarray:
-    """ 
+    """
     Set the image to blue colors.
     """
     try:
@@ -73,7 +73,6 @@ def ft_blue(img: np.ndarray) -> np.ndarray:
         blue_image = img.copy().astype(float)
         blue_image[:, :, 0] = 10
         blue_image[:, :, 1] = 10
-        #blue_image[:, :, 2] /= 2
         blue_image = np.clip(blue_image, 0, 255).astype(np.uint8)
     except AssertionError as e:
         print(f"Error in ft_blue: {e}")
@@ -113,8 +112,9 @@ def ft_grey(img: np.ndarray) -> np.ndarray:
     plt.show()
     return grey_rgb
 
+
 def main():
-    path ="/home/dakojic/Downloads/landscape.jpg"
+    path = "/home/dakojic/Downloads/landscape.jpg"
     image = ft_load(path)
     try:
         assert image is not None, "Failed to load image."
@@ -133,8 +133,7 @@ def main():
         exit(1)
     except Exception as e:
         print(f"Error processing image: {e}")
+
+
 if __name__ == "__main__":
     main()
-
-
-

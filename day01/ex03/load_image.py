@@ -9,7 +9,8 @@ def ft_load(path: str) -> np.ndarray | None:
     Returns the image as a NumPy array or None if the file is not found.
     """
     try:
-        assert path and isinstance(path, str), "Path must be a non-empty string."
+        assert path and isinstance(path, str), \
+            "Path must be a non-empty string."
         assert path.endswith(('.jpg', '.jpeg')), \
             "Unsupported file format. Use .jpg or .jpeg files."
         image = plt.imread(path)
