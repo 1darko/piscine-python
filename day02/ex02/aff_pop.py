@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 
 
 def human_format(x, pos):
+    """ 
+    Formats a number into a human-readable string with suffixes.
+    """
     if x >= 1e9:
         return f"{x/1e9:.1f}B"
     elif x >= 1e6:
@@ -14,6 +17,9 @@ def human_format(x, pos):
 
 
 def parse_population(value: str) -> float:
+    """
+    Parses a population value from a string to a float.
+    """
     if isinstance(value, str):
         value = value.strip()
         if value.endswith("B"):
@@ -25,6 +31,9 @@ def parse_population(value: str) -> float:
 
 
 def set_country_data(data: pd.DataFrame, country_n: str) -> None:
+    """"
+    Sets and plots the population data for a given country.
+    """
     country = data.loc[data["country"] == country_n]
 
     years = country.columns[1:].astype(int)
@@ -36,6 +45,9 @@ def set_country_data(data: pd.DataFrame, country_n: str) -> None:
 
 
 def main():
+    """
+    Main function to load data and plot population for specific countries.
+    """
     try:
         path = "/home/dakojic/Documents/population_total.csv"
         data = load(path)

@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 
 
 def human_format(x, pos):
+    """
+    Formats a number into a human-readable string with suffixes.
+    """
     if x >= 1e9:
         return f"{x/1e9:.1f}B"
     elif x >= 1e6:
@@ -14,6 +17,10 @@ def human_format(x, pos):
 
 
 def main():
+    """
+    Main function to load GDP and life expectancy data for 1900
+    and plot a scatter plot comparing the two.
+    """
     path_gdp = "/home/dakojic/Documents/gdp.csv"
     path_life = "/home/dakojic/Documents/life_expectancy_years.csv"
     try:
