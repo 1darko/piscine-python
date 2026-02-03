@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def human_format(x, pos):
-    """ 
+    """
     Formats a number into a human-readable string with suffixes.
     """
     if x >= 1e9:
