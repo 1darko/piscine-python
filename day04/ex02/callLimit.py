@@ -2,9 +2,13 @@ from typing import Any
 
 
 def callLimit(limit: int):
+    """Decorator that limits the number of times a function can be called."""
     count = 0
+
     def callLimiter(function):
+        """Inner decorator function."""
         def limit_function(*args: Any, **kwds: Any):
+            """Wrapper function that enforces the call limit."""
             nonlocal count
             if count < limit:
                 count += 1
