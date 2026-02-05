@@ -29,5 +29,5 @@ class Student:
                              must contain only alphabetic characters")
         self.login = self.name[0] + self.surname.lower()
 
-# student = Student(name = "1", id="ee", surname="e1")
+# student = Student(name = "o", surname="BERNARD")
 # print(student)

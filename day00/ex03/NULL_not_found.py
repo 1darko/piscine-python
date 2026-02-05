@@ -1,8 +1,7 @@
 def NULL_not_found(object: any) -> int:
     """
-    if(isinstance(object, float)) and object != object:
-        print("Cheese: nan", type(object))
-        return
+    This function takes any object as an argument
+    and checks for specific 'null' or 'empty' values,
     """
     if type(object) == float and object != object:
         print("Cheese: nan", type(object))
